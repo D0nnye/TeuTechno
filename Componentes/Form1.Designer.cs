@@ -30,7 +30,7 @@ namespace Componentes
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.cbcFrutaslistadas = new System.Windows.Forms.ComboBox();
+            this.cbbFrutaslistadas = new System.Windows.Forms.ComboBox();
             this.ltbFrutas = new System.Windows.Forms.ListBox();
             this.gpbFrutas = new System.Windows.Forms.GroupBox();
             this.lblBanana = new System.Windows.Forms.Label();
@@ -46,19 +46,19 @@ namespace Componentes
             this.txtSelecione = new System.Windows.Forms.TextBox();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
             this.gpbFrutas.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cbcFrutaslistadas
+            // cbbFrutaslistadas
             // 
-            this.cbcFrutaslistadas.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbcFrutaslistadas.FormattingEnabled = true;
-            this.cbcFrutaslistadas.Location = new System.Drawing.Point(480, 397);
-            this.cbcFrutaslistadas.Name = "cbcFrutaslistadas";
-            this.cbcFrutaslistadas.Size = new System.Drawing.Size(185, 27);
-            this.cbcFrutaslistadas.TabIndex = 6;
+            this.cbbFrutaslistadas.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbFrutaslistadas.FormattingEnabled = true;
+            this.cbbFrutaslistadas.Location = new System.Drawing.Point(480, 397);
+            this.cbbFrutaslistadas.Name = "cbbFrutaslistadas";
+            this.cbbFrutaslistadas.Size = new System.Drawing.Size(185, 27);
+            this.cbbFrutaslistadas.TabIndex = 6;
             // 
             // ltbFrutas
             // 
@@ -132,8 +132,10 @@ namespace Componentes
             // 
             // txtFrutasselecionada1
             // 
+            this.txtFrutasselecionada1.Enabled = false;
             this.txtFrutasselecionada1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFrutasselecionada1.Location = new System.Drawing.Point(102, 397);
+            this.txtFrutasselecionada1.MaxLength = 50;
             this.txtFrutasselecionada1.Name = "txtFrutasselecionada1";
             this.txtFrutasselecionada1.Size = new System.Drawing.Size(200, 27);
             this.txtFrutasselecionada1.TabIndex = 1;
@@ -154,9 +156,9 @@ namespace Componentes
             this.lblFrutaslistada.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFrutaslistada.Location = new System.Drawing.Point(476, 375);
             this.lblFrutaslistada.Name = "lblFrutaslistada";
-            this.lblFrutaslistada.Size = new System.Drawing.Size(127, 19);
+            this.lblFrutaslistada.Size = new System.Drawing.Size(93, 19);
             this.lblFrutaslistada.TabIndex = 5;
-            this.lblFrutaslistada.Text = "Fruta Selecionada";
+            this.lblFrutaslistada.Text = "Fruta Listada";
             // 
             // lblTitulo
             // 
@@ -182,9 +184,11 @@ namespace Componentes
             // 
             this.txtSelecione.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSelecione.Location = new System.Drawing.Point(102, 63);
+            this.txtSelecione.MaxLength = 50;
             this.txtSelecione.Name = "txtSelecione";
             this.txtSelecione.Size = new System.Drawing.Size(269, 27);
             this.txtSelecione.TabIndex = 0;
+            this.txtSelecione.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSelecione_KeyDown);
             // 
             // btnSelecionar
             // 
@@ -194,6 +198,7 @@ namespace Componentes
             this.btnSelecionar.TabIndex = 2;
             this.btnSelecionar.Text = "&Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
             // btnLimpar
             // 
@@ -203,15 +208,17 @@ namespace Componentes
             this.btnLimpar.TabIndex = 4;
             this.btnLimpar.Text = "&Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
-            // btnVoltar
+            // btnSair
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(575, 439);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(90, 40);
-            this.btnVoltar.TabIndex = 5;
-            this.btnVoltar.Text = "&Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnSair.Location = new System.Drawing.Point(575, 439);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(90, 40);
+            this.btnSair.TabIndex = 5;
+            this.btnSair.Text = "&Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnInserir
             // 
@@ -221,6 +228,7 @@ namespace Componentes
             this.btnInserir.TabIndex = 3;
             this.btnInserir.Text = "&Inserir";
             this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // Form1
             // 
@@ -228,7 +236,7 @@ namespace Componentes
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 511);
             this.Controls.Add(this.btnInserir);
-            this.Controls.Add(this.btnVoltar);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.txtSelecione);
@@ -239,7 +247,7 @@ namespace Componentes
             this.Controls.Add(this.txtFrutasselecionada1);
             this.Controls.Add(this.gpbFrutas);
             this.Controls.Add(this.ltbFrutas);
-            this.Controls.Add(this.cbcFrutaslistadas);
+            this.Controls.Add(this.cbbFrutaslistadas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
@@ -254,7 +262,7 @@ namespace Componentes
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbcFrutaslistadas;
+        private System.Windows.Forms.ComboBox cbbFrutaslistadas;
         private System.Windows.Forms.ListBox ltbFrutas;
         private System.Windows.Forms.GroupBox gpbFrutas;
         private System.Windows.Forms.Label lblSair;
@@ -270,7 +278,7 @@ namespace Componentes
         private System.Windows.Forms.TextBox txtSelecione;
         private System.Windows.Forms.Button btnSelecionar;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnInserir;
     }
 }
